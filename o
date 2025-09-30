@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <title>Shembeteng Translator</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    h1 {
+      color: #00ff88;
+    }
+    textarea, select, button {
+      width: 80%;
+      margin: 1em auto;
+      padding: 1em;
+      font-size: 1.2em;
+      border-radius: 10px;
+      border: none;
+    }
+    button {
+      background-color: #00ff88;
+      color: #111;
+      cursor: pointer;
+    }
+    #output {
+      background-color: #222;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shembeteng Translator</h1>
+  <p>Powered by Kuch – Mtaa Genius</p>
+
+  <textarea id="input" placeholder="Andika Kiswahili yako hapa..."></textarea><br>
+
+  <select id="style">
+    <option value="mbata">mbata</option>
+    <option value="mbete">mbete</option>
+    <option value="mbitimboto">mbitimboto</option>
+    <option value="mbutu">mbutu</option>
+  </select><br>
+
+  <button onclick="translate()">Chapisha Shembeteng!</button><br>
+
+  <textarea id="output" readonly placeholder="Shembeteng yako itaonekana hapa..."></textarea>
+
+  <script>
+    function translate() {
+      const input = document.getElementById("input").value;
+      const style = document.getElementById("style").value;
+      const vowels = "aeiouAEIOU";
+      let result = "";
+
+      for (let char of input) {
+        result += char;
+        if (vowels.includes(char)) {
+          result += style;
+        }
+      }
+
+      document.getElementById("output").value = result;
+    }
+  </script>
+</body>
+</html>
